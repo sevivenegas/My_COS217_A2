@@ -31,7 +31,7 @@ static size_t replaceAndWrite(const char *pcLine,
    /* Insert your code here. 
    should i create two cases where "to" is bigger than "from"
    */
-   while(end != '\0'){
+   while(end != NULL){
       if(*pcFrom == '\0'){
          printf(*end);
          end++;
