@@ -32,13 +32,15 @@ char* Str_copy(char *dst, const char *src)
 
 char* Str_concat(char *s1, const char *s2)
 {
+
+  char *start = s1;
+  const char *end = s2;
+
   assert(s1 != NULL);
   assert(s2 != NULL);
 
-  char *start = s1;
   /*starts at the end of s1 to add s2*/
   s1 = s1 + Str_getLength(s1);
-  const char *end = s2;
 
   while(*end != '\0'){
     *s1 = *end;
@@ -51,11 +53,12 @@ char* Str_concat(char *s1, const char *s2)
 
 int Str_compare(const char *s1, const char *s2)
 {
+   const char *end1 = s1;
+   const char *end2 = s2;
+
    assert(s1 != NULL);
    assert(s2 != NULL);
 
-   const char *end1 = s1;
-   const char *end2 = s2;
    while(*end1 != '\0')
    {
       /* difference in ascii values for result of comparison*/
@@ -71,6 +74,8 @@ int Str_compare(const char *s1, const char *s2)
 
 char* Str_search(const char *haystack, const char *needle)
 {
+  const char *startNeedle = needle;
+
   assert(haystack != NULL);
   assert(needle != NULL);
 
@@ -79,7 +84,6 @@ char* Str_search(const char *haystack, const char *needle)
   /*check determines if we have found a potential needle*/
   int check = 0;
   char *last_occurence;
-  const char *startNeedle = needle;
 
   while(*haystack != '\0'){
 
