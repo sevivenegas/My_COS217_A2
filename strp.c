@@ -1,9 +1,15 @@
+/*--------------------------------------------------------------------*/
+/* strp.c                                                          */
+/* Author: Sevastian Venegas                                                        */
+/*--------------------------------------------------------------------*/
+
 /*strp.c is a file that creates functions to mimic the
 string commands within stdio.h using pointer notation */
 
 #include <stddef.h>
 #include <assert.h>
 #include "str.h"
+
 
 size_t Str_getLength(const char *pcSrc)
 {
@@ -96,7 +102,7 @@ char* Str_search(const char *haystack, const char *needle)
       else if(*needle != *haystack){
         /*sets haystack back to an index 1 
         above when needle was found*/
-        haystack = last_occurence + 1;
+        if(*(last_occurence+1) != NULL) haystack = last_occurence + 1;
         check = 0;
         needle = startNeedle;
       }

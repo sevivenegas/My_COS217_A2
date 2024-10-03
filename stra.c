@@ -1,3 +1,8 @@
+/*--------------------------------------------------------------------*/
+/* stra.c                                                          */
+/* Author: Sevastian Venegas                                                        */
+/*--------------------------------------------------------------------*/
+
 /*strp.c is a file that creates functions to mimic the
 string commands within stdio.h using array notation */
 
