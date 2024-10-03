@@ -43,10 +43,12 @@ int Str_compare(const char s1[], const char* s2)
    /* do we assume they are the same size?*/
    assert(s1 != NULL && s2 != NULL);
    size_t i = 0;
+   
    while(s1[i] != '\0')
    {
       int x = s1[i] - s2[i];
-      if(x < 0) return -1;
+      if(s2[i] == '\0') return 1;
+      else if(x < 0) return -1;
       else if(x > 0) return 1;
       i++;
    }
