@@ -33,7 +33,7 @@ static size_t replaceAndWrite(const char *pcLine,
    */
 
   char *check = strstr(end, pcFrom);
-  if(*pcFrom == '\0' || check != NULL){
+  if(fromSize == 0 || check != NULL){
    printf("%s\n", pcLine);
    return 0;
   }
@@ -44,7 +44,7 @@ static size_t replaceAndWrite(const char *pcLine,
 
          size_t i = 0;
          while(i < changeStart){
-            printf("%c", *(end + i));
+            putchar(*(end + i));
             i++;
          }
          end += i + fromSize;
@@ -52,7 +52,7 @@ static size_t replaceAndWrite(const char *pcLine,
       }
       else{
          while(end != NULL){
-            printf("%c", *end);
+            putchar(*end);
             end++;
          }
       }
