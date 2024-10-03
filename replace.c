@@ -31,22 +31,30 @@ static size_t replaceAndWrite(const char *pcLine,
    /* Insert your code here. 
    should i create two cases where "to" is bigger than "from"
    */
+
+  char *check = strstr(end, pcFrom);
+  if(*pcFrom == '\0' || check != NULL){
+   printf("%s\n", pcLine);
+   return 0;
+  }
+
    while(end != NULL){
-      if(*pcFrom == '\0'){
-         printf(*end);
-         end++;
+      char *changeStart = strstr(end, pcFrom);
+      if(changeStart != NULL){
+
+         size_t i = 0;
+         while(i < changeStart){
+            prinf("%c", (end + i));
+            i++;
+         }
+         end += i + fromSize;
+         numReplace++;
       }
       else{
-         char *changeStart = strstr(end, pcFrom);
-         if(changeStart != NULL){
-            strcat(changeStart, pcTo);
-            char *update = changeStart + toSize;
-            char *tailEnd = *changeStart + fromSize;
-            strcpy(update, *tailEnd);
-            end = update;
-            numReplace++;
+         while(end != NULL){
+            printf("%c", end);
+            end++;
          }
-         else break;
       }
    }
    return numReplace;
