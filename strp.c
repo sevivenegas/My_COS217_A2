@@ -75,6 +75,7 @@ int Str_compare(const char *s1, const char *s2)
 char* Str_search(const char *haystack, const char *needle)
 {
   const char *startNeedle = needle;
+  char *last_occurence = NULL;
   /*check determines if we have found a potential needle*/
   int check = 0;
 
@@ -83,7 +84,6 @@ char* Str_search(const char *haystack, const char *needle)
 
   if(Str_getLength(needle) == 0) return (char*)(haystack);
 
-  char *last_occurence;
   while(*haystack != '\0'){
 
     /* proceed to find validity of potential needle*/
