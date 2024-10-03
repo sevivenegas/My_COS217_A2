@@ -24,7 +24,7 @@ static size_t replaceAndWrite(const char *pcLine,
    assert(pcFrom != NULL);
    assert(pcTo != NULL);
 
-   char *current = pcLine;
+   const char *current = pcLine;
    size_t toSize = strlen(pcTo);
    size_t fromSize = strlen(pcFrom);
    size_t numReplace = 0;
@@ -39,12 +39,12 @@ static size_t replaceAndWrite(const char *pcLine,
    while(*current != '\0'){
       char *found = strstr(current, pcFrom);
       if(found != NULL){
-
+         size_t i = 0;
          while(current != found){
             printf("%c", *current);
             current++;
          }
-         int i = 0;
+         
          while(i < toSize){
             printf("%c", *(pcTo + i));
             i++;
