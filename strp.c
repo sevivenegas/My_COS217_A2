@@ -54,7 +54,7 @@ int Str_compare(const char *s1, const char *s2)
 
    char *end1 = s1;
    char *end2 = s2;
-   while(end1 != '\0')
+   while(*end1 != '\0')
    {
       int x = *end1 - *end2;
       if(x < 0) return -1;
