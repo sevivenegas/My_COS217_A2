@@ -38,7 +38,7 @@ char* Str_concat(char *s1, const char *s2)
   char *end = s2;
 
   while(*end != '\0'){
-    *s1 = *s2;
+    *s1 = *end;
     s1++;
     end++;
   }
