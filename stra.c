@@ -31,11 +31,11 @@ char* Str_copy(char dst[], const char src[])
 char* Str_concat(char s1[], const char s2[])
 {
    size_t l = Str_getLength(s1);
+   size_t i = 0;
 
    assert(s1 != NULL);
    assert(s2 != NULL);
    
-   size_t i = 0;
    while(s2[i] != '\0'){
       s1[l + i] = s2[i];
       i++;
