@@ -53,7 +53,7 @@ int Str_compare(const char s1[], const char s2[])
    while(s1[i] != '\0')
    {
       /* difference in ascii values for result of comparison*/
-      int compareVal = s1[i] - s2[i];
+      int compareVal = (int)s1[i] - (int)s2[i];
       if(compareVal < 0) return -1;
       else if(compareVal > 0) return 1;
       i++;
