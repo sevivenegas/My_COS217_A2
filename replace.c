@@ -3,7 +3,7 @@
 /* Author: Sevastian Venegas                                                        */
 /*--------------------------------------------------------------------*/
 
-/* #include "str.h" */
+#include "str.h"
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
@@ -25,19 +25,18 @@ static size_t replaceAndWrite(const char *pcLine,
    assert(pcTo != NULL);
 
    const char *current = pcLine;
-   size_t toSize = strlen(pcTo);
-   size_t fromSize = strlen(pcFrom);
+   size_t toSize = Str_getLength(pcTo);
+   size_t fromSize = Str_getLength(pcFrom);
    size_t numReplace = 0;
-   /* Insert your code here.*/
 
-  char *check = strstr(current, pcFrom);
+  char *check = Str_search(current, pcFrom);
   if(fromSize == 0 || check == NULL){
    printf("%s", pcLine);
    return 0;
   }
 
    while(*current != '\0'){
-      char *found = strstr(current, pcFrom);
+      char *found = Str_search(current, pcFrom);
       if(found != NULL){
          size_t i = 0;
          while(current != found){
