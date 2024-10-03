@@ -55,8 +55,6 @@ static size_t replaceAndWrite(const char *pcLine,
             printf("%c", end);
             end++;
          }
-         /* might not need this*/
-         printf("\n");
       }
    }
    return numReplace;
@@ -99,6 +97,8 @@ int main(int argc, char *argv[])
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL){
       /* Insert your code here. */
       numReplacements += replaceAndWrite(acLine, pcFrom, pcTo);
+      /* might not need this*/
+      printf("\n");
    }
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
