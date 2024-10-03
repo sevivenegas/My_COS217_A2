@@ -1,8 +1,8 @@
 #include <stddef.h>
 #include <assert.h>
 
-#ifndef STR_COMMANDS
-#define STR_COMMANDS
+#ifndef STR_H
+#define STR_H
 
 /*return the length of string pcSrc*/
 size_t Str_getLength(const char *pcSrc);
