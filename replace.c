@@ -36,7 +36,7 @@ static size_t replaceAndWrite(const char *pcLine,
    return 0;
   }
 
-   while(current != '\0'){
+   while(*current != '\0'){
       char *found = strstr(current, pcFrom);
       if(found != NULL){
 
@@ -53,7 +53,7 @@ static size_t replaceAndWrite(const char *pcLine,
          numReplace++;
       }
       else{
-         while(current != '\0'){
+         while(*current != '\0'){
             printf("%c", *current);
             current++;
          }
