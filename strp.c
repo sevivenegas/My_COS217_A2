@@ -19,7 +19,7 @@ char* Str_copy(char *dst, const char *src)
   assert(src != NULL);
   assert(dst != NULL);
 
-  char* strt = dst;
+  char* strt = (char*)(dst);
   
   while(*src != '\0'){
     *dst = *src;
@@ -102,7 +102,7 @@ char* Str_search(const char *haystack, const char *needle)
     /*potential needle found*/
     if(check == 0 && *haystack == *needle){
       check = 1;
-      last_occurence = haystack;
+      last_occurence = (char*)(haystack);
       needle++;
     }
     haystack++;
