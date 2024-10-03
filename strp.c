@@ -60,7 +60,7 @@ int Str_compare(const char *s1, const char *s2)
    while(*end1 != '\0')
    {
       /* difference in ascii values for result of comparison*/
-      int compareVal = *end1 - *end2;
+      int compareVal = (int)(*end1 - *end2);
       if(compareVal < 0) return -1;
       else if(compareVal > 0) return 1;
       end1++;
