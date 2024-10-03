@@ -56,7 +56,7 @@ static size_t replaceAndWrite(const char *pcLine,
             end++;
          }
          /* might not need this*/
-         /*printf("\n");*/
+         printf("\n");
       }
    }
    return numReplace;
