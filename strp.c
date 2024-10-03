@@ -51,6 +51,7 @@ int Str_compare(const char *s1, const char *s2)
       s1++;
       s2++;
    }
+   if(Str_getLength(s1) < Str_getLength(s2)) return -1;
    return 0;
 }
 

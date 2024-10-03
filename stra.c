@@ -47,11 +47,11 @@ int Str_compare(const char s1[], const char* s2)
    while(s1[i] != '\0')
    {
       int x = s1[i] - s2[i];
-      if(s2[i] == '\0') return 1;
-      else if(x < 0) return -1;
+      if(x < 0) return -1;
       else if(x > 0) return 1;
       i++;
    }
+   if(Str_getLength(s1) < Str_getLength(s2)) return -1;
    return 0;
 }
 
@@ -64,16 +64,22 @@ char* Str_search(const char haystack[], const char needle[])
    int check = 0;
    size_t last_occurence = -1;
    size_t i = 0;
+   size_t j = 0;
    while(haystack[i] != '\0'){
 
       if(check == 1){
-         if(needle[i] == '\0') return &haystack[last_occurence];
-         else if(needle[i+1] == '\0' && haystack[i+1] == '\0') return last_occurence;
-         else if(needle[i] != haystack[i])check = 0;
+         if(needle[j] == '\0') return (char*)&haystack[last_occurence];
+         else if(needle[j+1] == '\0' && haystack[i+1] == '\0') return (char*)&haystack[last_occurence];
+         else if(needle[j] != haystack[i]){
+            check = 0;
+            j = 0;
+         }
+         else j++;
       }
       else if(check == 0 && haystack[i] == needle[0]){
          check = 1;
          last_occurence = i;
+         j++;
       }
       i++;
    }
