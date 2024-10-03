@@ -49,14 +49,18 @@ char* Str_concat(char *s1, const char *s2)
 int Str_compare(const char *s1, const char *s2)
 {
    /* do we assume they are the same size?*/
-   assert(s1 != NULL && s2 != NULL);
-   while(*s1 != '\0')
+   assert(s1 != NULL);
+   assert(s2 != NULL);
+
+   char *end1 = s1;
+   char *end2 = s2;
+   while(end1 != '\0')
    {
-      int x = *s1 - *s2;
+      int x = *end1 - *end2;
       if(x < 0) return -1;
       else if(x > 0) return 1;
-      s1++;
-      s2++;
+      end1++;
+      end2++;
    }
    if(Str_getLength(s1) < Str_getLength(s2)) return -1;
    return 0;

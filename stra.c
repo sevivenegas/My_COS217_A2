@@ -39,10 +39,11 @@ char* Str_concat(char s1[], const char s2[])
    return &s1[0];
 }
 
-int Str_compare(const char s1[], const char* s2)
+int Str_compare(const char s1[], const char s2[])
 {
    /* do we assume they are the same size?*/
-   assert(s1 != NULL && s2 != NULL);
+   assert(s1 != NULL);
+   assert(s2 != NULL);
    size_t i = 0;
    
    while(s1[i] != '\0')
