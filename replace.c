@@ -24,7 +24,7 @@ static size_t replaceAndWrite(const char *pcLine,
    assert(pcFrom != NULL);
    assert(pcTo != NULL);
 
-   char *end = pcLine;
+   char *current = pcLine;
    size_t toSize = strlen(pcTo);
    size_t fromSize = strlen(pcFrom);
    size_t numReplace = 0;
@@ -32,28 +32,32 @@ static size_t replaceAndWrite(const char *pcLine,
    should i create two cases where "to" is bigger than "from"
    */
 
-  char *check = strstr(end, pcFrom);
+  char *check = strstr(current, pcFrom);
   if(fromSize == 0 || check != NULL){
    printf("%s\n", pcLine);
    return 0;
   }
 
-   while(end != NULL){
-      char *changeStart = strstr(end, pcFrom);
-      if(changeStart != NULL){
+   while(current != '\0'){
+      char *found = strstr(current, pcFrom);
+      if(found != NULL){
 
-         size_t i = 0;
-         while(i < changeStart){
-            putchar(*(end + i));
+         while(current != found){
+            printf("%c", *current);
+            current++;
+         }
+         int i = 0;
+         while(i < toSize){
+            printf("%c", *(pcTo + i));
             i++;
          }
-         end += i + fromSize;
+         current += fromSize;
          numReplace++;
       }
       else{
-         while(end != NULL){
-            putchar(*end);
-            end++;
+         while(current != '\0'){
+            printf("%c", *current);
+            current++;
          }
       }
    }
@@ -97,8 +101,6 @@ int main(int argc, char *argv[])
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL){
       /* Insert your code here. */
       numReplacements += replaceAndWrite(acLine, pcFrom, pcTo);
-      /* might not need this*/
-      printf("\n");
    }
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    return 0;
