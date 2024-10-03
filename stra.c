@@ -30,10 +30,11 @@ char* Str_copy(char dst[], const char src[])
 /* void return? */
 char* Str_concat(char s1[], const char s2[])
 {
+   size_t l = Str_getLength(s1);
+
    assert(s1 != NULL);
    assert(s2 != NULL);
-   /* ask if length command gives us the final place where \0 is*/
-   size_t l = Str_getLength(s1);
+   
    size_t i = 0;
    while(s2[i] != '\0'){
       s1[l + i] = s2[i];
@@ -45,10 +46,10 @@ char* Str_concat(char s1[], const char s2[])
 
 int Str_compare(const char s1[], const char s2[])
 {
-   /* do we assume they are the same size?*/
+   size_t i = 0;
+
    assert(s1 != NULL);
    assert(s2 != NULL);
-   size_t i = 0;
    
    while(s1[i] != '\0')
    {
@@ -66,17 +67,17 @@ should i return address using &
 */
 char* Str_search(const char haystack[], const char needle[])
 {
+   int check = 0;
+   size_t last_occurence = 0;
+   size_t i = 0;
+   size_t j = 0;
+
    assert(haystack != NULL);
    assert(needle != NULL);
 
    if(Str_getLength(needle) == 0){
       return &haystack[0];
    }
-   
-   int check = 0;
-   size_t last_occurence = 0;
-   size_t i = 0;
-   size_t j = 0;
 
    while(haystack[i] != '\0'){
 
