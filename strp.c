@@ -1,3 +1,6 @@
+/*strp.c is a file that creates functions to mimic the
+string commands within stdio.h using pointer notation */
+
 #include <stddef.h>
 #include <assert.h>
 
@@ -14,6 +17,7 @@ size_t Str_getLength(const char *pcSrc)
 char* Str_copy(char *dst, const char *src)
 {
   assert(src != NULL);
+  assert(dst != NULL);
 
   char *end = src;
   char *strt = dst;
@@ -33,7 +37,7 @@ char* Str_concat(char *s1, const char *s2)
   assert(s2 != NULL);
 
   char *start = s1;
-  /* ask if you need to add one so it starts on \0 of s1*/
+  /*starts at the end of s1 to add s2*/
   s1 = s1 + Str_getLength(s1);
   char *end = s2;
 
@@ -48,7 +52,6 @@ char* Str_concat(char *s1, const char *s2)
 
 int Str_compare(const char *s1, const char *s2)
 {
-   /* do we assume they are the same size?*/
    assert(s1 != NULL);
    assert(s2 != NULL);
 
@@ -56,9 +59,10 @@ int Str_compare(const char *s1, const char *s2)
    char *end2 = s2;
    while(*end1 != '\0')
    {
-      int x = *end1 - *end2;
-      if(x < 0) return -1;
-      else if(x > 0) return 1;
+      /* difference in ascii values for result of comparison*/
+      int compareVal = *end1 - *end2;
+      if(compareVal < 0) return -1;
+      else if(compareVal > 0) return 1;
       end1++;
       end2++;
    }
@@ -73,17 +77,19 @@ char* Str_search(const char *haystack, const char *needle)
 
   if(Str_getLength(needle) == 0) return haystack;
 
+  /*check determines if we have found a potential needle*/
   int check = 0;
   char *last_occurence = 0;
   char *startNeedle = needle;
 
-
-  /* will the while loop go over \0 too? */
   while(*haystack != NULL){
 
+    /* proceed to find validity of potential needle*/
     if(check == 1){
       if(*needle == '\0') return last_occurence;
       else if(*needle != *haystack){
+        /*sets haystack back to an index 1 
+        above when needle was found*/
         haystack = last_occurence + 1;
         check = 0;
         needle = startNeedle;
@@ -94,6 +100,7 @@ char* Str_search(const char *haystack, const char *needle)
       else needle++;
          
     }
+    /*potential needle found*/
     if(check == 0 && *haystack == *needle){
       check = 1;
       last_occurence = haystack;
