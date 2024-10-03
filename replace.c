@@ -20,16 +20,16 @@
 static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
-   assert(pcLine != NULL);
-   assert(pcFrom != NULL);
-   assert(pcTo != NULL);
-
    const char *current = pcLine;
    size_t toSize = Str_getLength(pcTo);
    size_t fromSize = Str_getLength(pcFrom);
    size_t numReplace = 0;
+   char *check = Str_search(current, pcFrom);
 
-  char *check = Str_search(current, pcFrom);
+   assert(pcLine != NULL);
+   assert(pcFrom != NULL);
+   assert(pcTo != NULL);
+
   if(fromSize == 0 || check == NULL){
    printf("%s", pcLine);
    return 0;
