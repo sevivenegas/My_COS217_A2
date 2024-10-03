@@ -21,15 +21,19 @@ static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
    const char *current = pcLine;
+   size_t numReplace = 0;
+
    size_t toSize = Str_getLength(pcTo);
    size_t fromSize = Str_getLength(pcFrom);
-   size_t numReplace = 0;
+
+   /*check if string even needs to be changed*/
    char *check = Str_search(current, pcFrom);
 
    assert(pcLine != NULL);
    assert(pcFrom != NULL);
    assert(pcTo != NULL);
 
+   /*no changes need prints line*/
   if(fromSize == 0 || check == NULL){
    printf("%s", pcLine);
    return 0;
@@ -37,20 +41,28 @@ static size_t replaceAndWrite(const char *pcLine,
 
    while(*current != '\0'){
       char *found = Str_search(current, pcFrom);
+      /*enters for a replacement pcTo*/
       if(found != NULL){
          size_t i = 0;
+
+         /* prints to stdout starting from beginning
+         or ahead of last replacement until pcFrom 
+         needs to be replaced*/
          while(current != found){
             printf("%c", *current);
             current++;
          }
          
+         /*prints to stdout pcTo replacement string*/
          while(i < toSize){
             printf("%c", *(pcTo + i));
             i++;
          }
+
          current += fromSize;
          numReplace++;
       }
+      /* no pcFrom left and prints remaining part of strg*/
       else{
          while(*current != '\0'){
             printf("%c", *current);
@@ -94,7 +106,6 @@ int main(int argc, char *argv[])
    pcTo = argv[2];
 
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL){
-      /* Insert your code here. */
       uReplaceCount += replaceAndWrite(acLine, pcFrom, pcTo);
    }
    fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
