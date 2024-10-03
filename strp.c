@@ -40,7 +40,7 @@ char* Str_concat(char *s1, const char *s2)
   while(*end != '\0'){
     *s1 = *s2;
     s1++;
-    s2++;
+    end++;
   }
   *s1 = '\0';
   return start;
