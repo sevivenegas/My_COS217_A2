@@ -16,10 +16,10 @@ size_t Str_getLength(const char *pcSrc)
 
 char* Str_copy(char *dst, const char *src)
 {
+  char* strt = dst;
+
   assert(src != NULL);
   assert(dst != NULL);
-
-  char* strt = (char*)(dst);
   
   while(*src != '\0'){
     *dst = *src;
@@ -77,7 +77,7 @@ char* Str_search(const char *haystack, const char *needle)
   if(Str_getLength(needle) == 0) return (char*)(haystack);
 
   /*check determines if we have found a potential needle*/
-  size_t check = 0;
+  int check = 0;
   char *last_occurence;
   const char *startNeedle = needle;
 
