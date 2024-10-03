@@ -77,7 +77,7 @@ char* Str_search(const char *haystack, const char *needle)
         check = 0;
         needle = startNeedle;
       }
-      else if(needle + 1 == '\0' && haystack + 1 == '\0'){
+      else if(*(needle + 1) == '\0' && *(haystack + 1) == '\0'){
         return last_occurence;
       }
       else needle++;
