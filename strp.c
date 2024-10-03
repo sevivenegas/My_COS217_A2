@@ -14,7 +14,7 @@ size_t Str_getLength(const char *pcSrc)
 char* Str_copy(char *dst, const char *src)
 {
   char *strt = dst;
-  
+  assert(src != NULL);
   while(*src != '\0'){
     *dst = *src;
     dst++;
@@ -58,10 +58,14 @@ int Str_compare(const char *s1, const char *s2)
 char* Str_search(const char *haystack, const char *needle)
 {
   assert(haystack != NULL);
+  assert(needle != NULL);
+
+  if(Str_getLength(needle) == 0) return haystack;
+
   int check = 0;
   char *last_occurence = 0;
   char *startNeedle = needle;
-  size_t i = 0;
+
 
   /* will the while loop go over \0 too? */
   while(*haystack != NULL){
@@ -69,13 +73,17 @@ char* Str_search(const char *haystack, const char *needle)
     if(check == 1){
       if(*needle == '\0') return last_occurence;
       else if(*needle != *haystack){
+        haystack = last_occurence + 1;
         check = 0;
         needle = startNeedle;
+      }
+      else if(needle + 1 == '\0' && haystack + 1 == '\0'){
+        return last_occurence;
       }
       else needle++;
          
     }
-    else if(check == 0 && *haystack == *needle){
+    if(check == 0 && *haystack == *needle){
       check = 1;
       last_occurence = haystack;
       needle++;
