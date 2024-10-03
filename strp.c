@@ -102,7 +102,8 @@ char* Str_search(const char *haystack, const char *needle)
       else if(*needle != *haystack){
         /*sets haystack back to an index 1 
         above when needle was found*/
-        if(*(last_occurence+1) != NULL) haystack = last_occurence + 1;
+        assert(last_occurence+1 != NULL);
+        haystack = last_occurence + 1;
         check = 0;
         needle = startNeedle;
       }
