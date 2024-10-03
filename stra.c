@@ -66,8 +66,10 @@ char* Str_search(const char haystack[], const char needle[])
    assert(haystack != NULL);
    assert(needle != NULL);
 
-   if(Str_getLength(needle) == 0) return (char*)haystack;
-
+   if(Str_getLength(needle) == 0){
+      return &haystack[0];
+   }
+   
    int check = 0;
    size_t last_occurence = 0;
    size_t i = 0;
