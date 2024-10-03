@@ -32,7 +32,7 @@ static size_t replaceAndWrite(const char *pcLine,
 
   char *check = strstr(current, pcFrom);
   if(fromSize == 0 || check == NULL){
-   printf("%s\n", pcLine);
+   printf("%s", pcLine);
    return 0;
   }
 
