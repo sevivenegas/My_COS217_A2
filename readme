@@ -64,7 +64,7 @@ disagreements with them? Copy the splint warnings here, and express your
 disagreement after each warning. If there are no warnings, then write
 "None."
 
-
+None.
 
 ------------------------------------------------------------------------
 What warnings does critTer generate on stra.c, and what are your
@@ -80,7 +80,22 @@ disagreements with them? Copy the splint warnings here, and express your
 disagreement after each warning. If there are no warnings, then write
 "None."
 
+strp.c: (in function Str_search)
+  strp.c:105:20: Pointer arithmetic involving possibly null pointer
+                    last_occurence: last_occurence + 1
+    Pointer arithmetic using a possibly null pointer and integer. (Use
+    -nullptrarith to inhibit warning)
 
+line 105:
+haystack = last_occurence + 1;
+
+This warning occurs due to the possibility of last_occurence pointing at a 
+NULL. However, due to the structure of the program this is not possible as
+in my program haystack moves forward past last_occurence. Haystack only moves 
+forward one until worse case it is equal to '\0' then it breaks out a loop.
+Therefore last_occurence cannot even be a '\0' or NULL, since the pointer
+ahead of it can equal neither. This line simply moves haystack back for special
+test cases. (refer to code for better detail).
 
 ------------------------------------------------------------------------
 What warnings does critTer generate on strp.c, and what are your
@@ -88,7 +103,7 @@ disagreements with them? Copy the critTer warnings here, and express
 your disagreement after each warning. If there are no warnings, then
 write "None."
 
-
+None.
 
 ------------------------------------------------------------------------
 What warnings does splint generate on replace.c, and what are your
@@ -96,6 +111,7 @@ disagreements with them? Copy the splint warnings here, and express your
 disagreement after each warning. If there are no warnings, then write
 "None."
 
+Minus the one from compiling with strp.c. None.
 
 
 ------------------------------------------------------------------------
@@ -104,13 +120,22 @@ disagreements with them? Copy the critTer warnings here, and express
 your disagreement after each warning. If there are no warnings, then
 write "None."
 
-
+None.
 
 ------------------------------------------------------------------------
 Is it possible for Str_copy or Str_concat to call assert to verify
 that the destination memory area specified by the caller is large
 enough? Explain.
 
-
+No. The reason is because both sizeOf and getLength will not be useful
+in determining if the returned string will have enough bytes/memory. 
+Since we are passing in pointers into the functions if we attempt to 
+assert using sizeOf(pointer) we always recieve a true. This is due to
+the fact the size of a pointer is always 8 bytes therefore assert will
+always be true even when there is not enough space. GetLength will also
+work as it accuires the length of a string through counting each index 
+until reaches '\0'. As a result, we have no idea if the getlengthed 
+string has enough or even has allocated memory follwing '\0' to store
+the other string or copy.
 
 ------------------------------------------------------------------------
