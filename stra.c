@@ -76,7 +76,7 @@ char* Str_search(const char haystack[], const char needle[])
    assert(needle != NULL);
 
    if(Str_getLength(needle) == 0){
-      return &haystack[0];
+      return (char*)(&haystack[0]);
    }
 
    while(haystack[i] != '\0'){
@@ -89,7 +89,7 @@ char* Str_search(const char haystack[], const char needle[])
             j = 0;
          }
          else if(needle[j+1] == '\0' && haystack[i+1] == '\0'){
-            return (char*)&haystack[last_occurence];
+            return (char*)(&haystack[last_occurence]);
          } 
          else j++;
       }
