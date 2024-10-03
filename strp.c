@@ -13,12 +13,13 @@ size_t Str_getLength(const char *pcSrc)
 
 char* Str_copy(char *dst, const char *src)
 {
+  char *end = src;
   char *strt = dst;
   assert(src != NULL);
-  while(*src != '\0'){
-    *dst = *src;
+  while(*end != '\0'){
+    *dst = *end;
     dst++;
-    src++;
+    end++;
   }
   *dst = '\0';
   return *strt;
@@ -26,11 +27,14 @@ char* Str_copy(char *dst, const char *src)
 
 char* Str_concat(char *s1, const char *s2)
 {
-  assert(s1 != NULL && s2 != NULL);
+  assert(s1 != NULL);
+  assert(s2 != NULL);
+
   /* ask if you need to add one so it starts on \0 of s1*/
   s1 = s1 + Str_getLength(s1);
+  char *end = s2;
 
-  while(*s2 != '\0'){
+  while(*end != '\0'){
     *s1 = *s2;
     s1++;
     s2++;
