@@ -82,7 +82,10 @@ char* Str_search(const char *haystack, const char *needle)
   assert(haystack != NULL);
   assert(needle != NULL);
 
-  if(Str_getLength(needle) == 0) return (char*)(haystack);
+  /* no needle - empty */
+  if(Str_getLength(needle) == 0){
+    return (char*)(haystack);
+  } 
 
   while(*haystack != '\0'){
 
