@@ -1,5 +1,6 @@
 #include <stddef.h>
 #include <assert.h>
+#include "strp.c"
 
 #ifndef STR_COMMANDS
 #define STR_COMMANDS
