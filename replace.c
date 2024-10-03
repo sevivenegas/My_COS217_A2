@@ -44,7 +44,7 @@ static size_t replaceAndWrite(const char *pcLine,
 
          size_t i = 0;
          while(i < changeStart){
-            printf("%c", (end + i));
+            printf("%c", *(end + i));
             i++;
          }
          end += i + fromSize;
@@ -52,7 +52,7 @@ static size_t replaceAndWrite(const char *pcLine,
       }
       else{
          while(end != NULL){
-            printf("%c", end);
+            printf("%c", *end);
             end++;
          }
       }
