@@ -1,3 +1,6 @@
+/*strp.c is a file that creates functions to mimic the
+string commands within stdio.h using array notation */
+
 #include <stddef.h>
 #include <assert.h>
 
