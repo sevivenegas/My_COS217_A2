@@ -19,7 +19,7 @@ char* Str_copy(char *dst, const char *src)
   assert(src != NULL);
   assert(dst != NULL);
 
-  char *strt = dst;
+  char* strt = dst;
   
   while(*src != '\0'){
     *dst = *src;
