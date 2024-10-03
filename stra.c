@@ -26,7 +26,8 @@ char* Str_copy(char dst[], const char src[])
 /* void return? */
 char* Str_concat(char s1[], const char s2[])
 {
-   assert(s1 != NULL && s2 != NULL);
+   assert(s1 != NULL);
+   assert(s2 != NULL);
    /* ask if length command gives us the final place where \0 is*/
    size_t l = Str_getLength(s1);
    size_t i = 0;

@@ -32,6 +32,7 @@ char* Str_concat(char *s1, const char *s2)
   assert(s1 != NULL);
   assert(s2 != NULL);
 
+  char *start = *s1;
   /* ask if you need to add one so it starts on \0 of s1*/
   s1 = s1 + Str_getLength(s1);
   char *end = s2;
@@ -42,7 +43,7 @@ char* Str_concat(char *s1, const char *s2)
     s2++;
   }
   *s1 = '\0';
-  return s1;
+  return start;
 }
 
 int Str_compare(const char *s1, const char *s2)
