@@ -19,13 +19,12 @@ char* Str_copy(char *dst, const char *src)
   assert(src != NULL);
   assert(dst != NULL);
 
-  const char *end = src;
   const char *strt = dst;
   
-  while(*end != '\0'){
-    *dst = *end;
+  while(*src != '\0'){
+    *dst = *src;
     dst++;
-    end++;
+    src++;
   }
   *dst = '\0';
   return strt;
