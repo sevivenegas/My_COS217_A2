@@ -28,9 +28,7 @@ static size_t replaceAndWrite(const char *pcLine,
    size_t toSize = strlen(pcTo);
    size_t fromSize = strlen(pcFrom);
    size_t numReplace = 0;
-   /* Insert your code here. 
-   should i create two cases where "to" is bigger than "from"
-   */
+   /* Insert your code here.*/
 
   char *check = strstr(current, pcFrom);
   if(fromSize == 0 || check == NULL){
@@ -96,12 +94,11 @@ int main(int argc, char *argv[])
    pcFrom = argv[1];
    pcTo = argv[2];
 
-   size_t numReplacements = 0;
-
    while (fgets(acLine, MAX_LINE_SIZE, stdin) != NULL){
       /* Insert your code here. */
-      numReplacements += replaceAndWrite(acLine, pcFrom, pcTo);
+      uReplaceCount = replaceAndWrite(acLine, pcFrom, pcTo);
+      fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
    }
-   fprintf(stderr, "%lu replacements\n", (unsigned long)uReplaceCount);
+   
    return 0;
 }
