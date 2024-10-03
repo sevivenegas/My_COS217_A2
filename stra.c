@@ -10,7 +10,7 @@ size_t Str_getLength(const char pcSrc[])
 }
 
 /* void return? return char pointer*/
-void Str_copy(char dst[], const char src[])
+char* Str_copy(char dst[], const char src[])
 {
    size_t i = 0;
    assert(src != NULL);
@@ -19,10 +19,11 @@ void Str_copy(char dst[], const char src[])
       i++;
    }
    dst[i] = '\0';
+   return &dst[0];
 }
 
 /* void return? */
-void Str_concat(char s1[], const char s2[])
+char* Str_concat(char s1[], const char s2[])
 {
    assert(s1 != NULL && s2 != NULL);
    /* ask if length command gives us the final place where \0 is*/
@@ -33,7 +34,7 @@ void Str_concat(char s1[], const char s2[])
       i++;
    }
    s1[l + i] = '\0';
-   return s1;
+   return &s1[0];
 }
 
 int Str_compare(const char s1[], const char* s2)
