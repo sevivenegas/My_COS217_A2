@@ -74,7 +74,7 @@ char* Str_search(const char *haystack, const char *needle)
   assert(haystack != NULL);
   assert(needle != NULL);
 
-  if(Str_getLength(needle) == 0) return haystack;
+  if(Str_getLength(needle) == 0) return (char*)(haystack);
 
   /*check determines if we have found a potential needle*/
   int check = 0;
