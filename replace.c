@@ -21,6 +21,8 @@ static size_t replaceAndWrite(const char *pcLine,
                               const char *pcFrom, const char *pcTo)
 {
    assert(pcLine != NULL);
+   assert(pcFrom != NULL);
+   assert(pcTo != NULL);
 
    char *end = pcLine;
    size_t toSize = strlen(pcTo);
