@@ -8,6 +8,7 @@ string commands within stdio.h using array notation */
 
 #include <stddef.h>
 #include <assert.h>
+#include "str.h"
 
 size_t Str_getLength(const char pcSrc[])
 {
